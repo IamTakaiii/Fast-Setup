@@ -1,0 +1,45 @@
+{
+  "name": "elysia-clean-archi",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "bun run --watch src/index.ts",
+    "build": "bun build src/index.ts --outdir dist",
+    "test": "vitest",
+    "test:unit": "vitest run tests/unit",
+    "test:int": "vitest run tests/integration",
+    "format": "biome format src --write",
+    "lint": "biome check src",
+    "lint:fix": "biome check --write src",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    "generate:module": "bun run scripts/generate-module.ts",
+    "remove:module": "bun run scripts/remove-module.ts",
+    "sync:openapi": "bun run scripts/sync-openapi-tags.ts"
+  },
+  "dependencies": {
+    "elysia": "latest",
+    "@elysiajs/openapi": "latest",
+    "@elysiajs/cors": "latest",
+    "elysia-helmet": "latest",
+    "better-auth": "latest",
+    "drizzle-orm": "latest",
+    "@sinclair/typebox": "latest",
+    "reflect-metadata": "^0.2.1",
+    "tsyringe": "^4.8.0",
+    "dotenv": "^16.4.5",
+    "pg": "latest",
+    "elysia-logger": "latest",
+    "pino": "latest",
+    "i18next": "latest"
+  },
+  "devDependencies": {
+    "bun-types": "latest",
+    "drizzle-kit": "latest",
+    "@types/pg": "latest",
+    "vitest": "latest",
+    "@biomejs/biome": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

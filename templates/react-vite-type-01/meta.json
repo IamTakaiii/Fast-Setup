@@ -1,0 +1,22 @@
+{
+  "name": "react-vite-type-01",
+  "description": "Production-ready Vite + React boilerplate designed for scalability and performance.",
+  "techStack": {
+    "Framework": "React 18 + Vite",
+    "Language": "TypeScript",
+    "Styling": "TailwindCSS + Shadcn UI",
+    "State/Data": "TanStack Query",
+    "Routing": "TanStack Router (File-based routing)",
+    "Testing": "Vitest + Playwright",
+    "Docs": "Storybook"
+  },
+  "features": [
+    "🔐 Authentication: Pre-built pages & hooks for Better Auth (Login, Register, Forgot Password).",
+    "🌍 Internationalization (i18n): Built-in support (EN, TH, ES) with type-safe translations.",
+    "🧩 Component Library: Integrated Shadcn UI with easy customization.",
+    "🛤️ Advanced Routing: Type-safe file-based routing with TanStack Router.",
+    "🐳 DevOps Ready: Dockerfile included for containerization.",
+    "🛡️ Code Quality: Pre-configured ESLint, Prettier, Husky (Git hooks), and Commitlint.",
+    "📦 Layout System: Flexible layout providers with sidebar and header configurations."
+  ]
+}

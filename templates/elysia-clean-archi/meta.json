@@ -1,0 +1,25 @@
+{
+  "name": "elysia-clean-archi",
+  "description": "ElysiaJS template using Feature-Sliced Architecture (Modular) with DDD principles.",
+  "techStack": {
+    "Framework": "ElysiaJS",
+    "Language": "TypeScript",
+    "Architecture": "Feature-Sliced / Modular DDD",
+    "Database": "PostgreSQL (Drizzle ORM)",
+    "DI": "tsyringe",
+    "Testing": "Vitest",
+    "Auth": "Better Auth",
+    "Logging": "Pino + Elysia Logger"
+  },
+  "features": [
+    "📦 Modular Architecture: Features are self-contained (Domain, Data, Presentation co-located).",
+    "💉 Dependency Injection: Fully decoupled architecture using tsyringe.",
+    "🪵 Logging Service: Abstracted Logger Port/Adapter (Pino) injected into Domain.",
+    "🔐 Authentication: Pre-configured Better Auth integration.",
+    "🗄️ Database: PostgreSQL via Drizzle ORM.",
+    "🧪 Testing Ready: Unit & Integration tests setup with Vitest.",
+    "🤖 CI/CD: GitHub Actions for automated linting and testing.",
+    "🛡️ Type Safety: End-to-end type safety with TypeBox and Drizzle.",
+    "🧹 Code Quality: BiomeJS for fast linting and formatting."
+  ]
+}

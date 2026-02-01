@@ -1,0 +1,69 @@
+{
+    "home": {
+        "greeting": "Hello, world!"
+    },
+    "auth": {
+        "login": {
+            "title": "Welcome back",
+            "description": "Enter your credentials to sign in to your account",
+            "submit": "Sign In",
+            "forgot_password": "Forgot your password?",
+            "no_account": "Don't have an account?",
+            "sign_up_link": "Sign up"
+        },
+        "forgot_password": {
+            "title": "Forgot Password",
+            "description": "Enter your email address and we'll send you a link to reset your password",
+            "submit": "Send Reset Link",
+            "back_to_login": "Back to Login",
+            "success_title": "Check your email",
+            "success_description": "We've sent you a password reset link. Please check your email and follow the instructions.",
+            "try_another_email": "Try another email"
+        },
+        "register": {
+            "title": "Create an account",
+            "description": "Enter your email below to create your account",
+            "submit": "Sign Up",
+            "have_account": "Already have an account?",
+            "sign_in_link": "Sign in"
+        },
+        "fields": {
+            "name": "Full Name",
+            "email": "Email",
+            "password": "Password",
+            "confirm_password": "Confirm Password"
+        },
+        "placeholders": {
+            "name": "John Doe",
+            "email": "name@example.com",
+            "password": "••••••••"
+        },
+        "social": {
+            "github": "Github",
+            "google": "Google",
+            "or_continue_with": "Or continue with"
+        },
+        "terms": {
+            "text": "By clicking continue, you agree to our",
+            "terms_of_service": "Terms of Service",
+            "and": "and",
+            "privacy_policy": "Privacy Policy"
+        },
+        "validation": {
+            "name_min_length": "Name must be at least 2 characters",
+            "invalid_email": "Invalid email address",
+            "password_min_length": "Password must be at least 8 characters",
+            "password_required": "Password is required",
+            "password_mismatch": "Passwords do not match",
+            "failed_sign_in": "Failed to sign in",
+            "failed_sign_up": "Failed to sign up",
+            "unexpected_error": "An unexpected error occurred",
+            "social_error": "Failed to connect with social provider"
+        },
+        "visuals": {
+            "quote": "Design is not just what it looks like and feels like. Design is how it works.",
+            "author": "Steve Jobs",
+            "company": "Acme Inc."
+        }
+    }
+}
