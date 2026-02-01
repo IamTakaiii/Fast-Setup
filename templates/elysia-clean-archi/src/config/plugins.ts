@@ -1,13 +1,12 @@
-import { Elysia } from "elysia";
-import { openapi } from "@elysiajs/openapi";
 import { cors } from "@elysiajs/cors";
-import { helmet } from "elysia-helmet";
-import { logger } from "elysia-logger";
+import { openapi } from "@elysiajs/openapi";
 import { auth } from "@shared/auth/auth";
-import { env, isProduction } from "./env";
 import { authOpenAPI } from "@shared/auth/auth.docs";
 import { openApiRegistry } from "@shared/openapi/openapi.registry";
-
+import { Elysia } from "elysia";
+import { helmet } from "elysia-helmet";
+import { logger } from "elysia-logger";
+import { env, isProduction } from "./env";
 
 export const corsPlugin = cors({
     origin: (request) => {
@@ -30,14 +29,14 @@ export const helmetPlugin = helmet({
     contentSecurityPolicy: isProduction,
 });
 
-// OpenAPI สำหรับ Internal Use (ทุก endpoints)
+// OpenAPI สำหรับ Internal Use (ทุก endpoints) - Protected with Basic Auth in index.ts
 export const openapiInternalPlugin = openapi({
     path: "/internal",
     documentation: {
         info: {
             title: "Internal API Documentation",
             version: "1.0.0",
-            description: "Complete API documentation for internal use",
+            description: "Complete API documentation for internal use (Protected)",
         },
         components: await authOpenAPI.components,
         paths: await authOpenAPI.getPaths(),

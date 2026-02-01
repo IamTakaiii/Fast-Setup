@@ -15,12 +15,14 @@ import { handleError } from "@shared/errors/error.middleware";
 import { apiRoutes } from "./api";
 import { env } from "./config/env";
 import { healthRoutes } from "@modules/health/health.controller";
+import { basicAuthGuard } from "@shared/auth/basic-auth.middleware";
 
 const app = new Elysia()
     .onError(handleError)
     .use(corsPlugin)
     .use(helmetPlugin)
     .use(loggerPlugin)
+    .onBeforeHandle(basicAuthGuard)
     .use(authPlugin)
     .use(apiRoutes)
     .use(healthRoutes)

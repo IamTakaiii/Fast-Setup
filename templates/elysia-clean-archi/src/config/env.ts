@@ -1,4 +1,4 @@
-import { Type, type Static } from "@sinclair/typebox";
+import { type Static, Type } from "@sinclair/typebox";
 import { Value } from "@sinclair/typebox/value";
 
 const EnvSchema = Type.Object({
@@ -22,6 +22,8 @@ const EnvSchema = Type.Object({
         ],
         { default: "info" },
     ),
+    INTERNAL_DOCS_USERNAME: Type.String({ default: "admin" }),
+    INTERNAL_DOCS_PASSWORD: Type.String({ default: "admin" }),
 });
 
 export type Env = Static<typeof EnvSchema>;
@@ -35,6 +37,8 @@ function validateEnv(): Env {
         BETTER_AUTH_SECRET: process.env.BETTER_AUTH_SECRET,
         BETTER_AUTH_URL: process.env.BETTER_AUTH_URL,
         LOG_LEVEL: process.env.LOG_LEVEL,
+        INTERNAL_DOCS_USERNAME: process.env.INTERNAL_DOCS_USERNAME,
+        INTERNAL_DOCS_PASSWORD: process.env.INTERNAL_DOCS_PASSWORD,
     };
 
     const envWithDefaults = Value.Default(EnvSchema, rawEnv);
