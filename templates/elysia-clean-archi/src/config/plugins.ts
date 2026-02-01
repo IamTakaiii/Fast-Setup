@@ -8,9 +8,22 @@ import { env, isProduction } from "./env";
 import { authOpenAPI } from "@shared/auth/auth.docs";
 import { openApiRegistry } from "@shared/openapi/openapi.registry";
 
+
 export const corsPlugin = cors({
-    origin: env.CORS_ORIGIN === "*" ? true : env.CORS_ORIGIN,
+    origin: (request) => {
+        const origin = request.headers.get("origin");
+        if (!origin) return false;
+        
+        if (env.CORS_ORIGIN === "*") {
+            return true;
+        }
+        
+        const allowedOrigins = env.CORS_ORIGIN.split(",").map(o => o.trim());
+        return allowedOrigins.includes(origin);
+    },
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
 });
 
 export const helmetPlugin = helmet({
