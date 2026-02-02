@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useTranslation } from "node_modules/react-i18next";
+import { useTranslation } from "react-i18next";
 
 export function AuthTerms() {
 	const { t } = useTranslation();

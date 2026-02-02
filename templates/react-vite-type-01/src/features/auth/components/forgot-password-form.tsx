@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import { useForgotPassword } from "../hooks/use-forgot-password";
-import { useTranslation } from "node_modules/react-i18next";
+import { useTranslation } from "react-i18next";
 import { useTranslateError } from "@/hooks/use-translate-error";
 import { Link } from "@tanstack/react-router";
 

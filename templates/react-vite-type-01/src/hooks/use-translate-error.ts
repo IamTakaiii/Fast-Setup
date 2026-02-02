@@ -1,5 +1,5 @@
 import type { ParseKeys } from "i18next";
-import { useTranslation } from "node_modules/react-i18next";
+import { useTranslation } from "react-i18next";
 
 /**
  * Hook for translating form validation error messages.

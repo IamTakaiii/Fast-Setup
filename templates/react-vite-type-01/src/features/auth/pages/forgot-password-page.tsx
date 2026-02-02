@@ -1,5 +1,5 @@
 import { LanguageSwitcher } from "@/components/ui/language-switcher";
-import { useTranslation } from "node_modules/react-i18next";
+import { useTranslation } from "react-i18next";
 import { AuthVisuals } from "../components/auth-visuals";
 import { AuthTerms } from "../components/auth-terms";
 import { ForgotPasswordForm } from "../components/forgot-password-form";
