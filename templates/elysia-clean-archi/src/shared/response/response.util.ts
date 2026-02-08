@@ -14,8 +14,22 @@ export interface ApiResponseData<T, M = unknown> {
     meta?: M;
 }
 
+export interface ApiErrorResponse {
+    success: false;
+    message: string;
+    error: {
+        code: string;
+        details: unknown;
+    };
+}
+
 export const ApiResponse = {
-    success<T, M = unknown>(data: T, messageKey = "success", lng = "en", meta?: M): ApiResponseData<T, M> {
+    success<T, M = unknown>(
+        data: T,
+        messageKey = "success",
+        lng = "en",
+        meta?: M,
+    ): ApiResponseData<T, M> {
         return {
             success: true,
             message: i18next.t(messageKey, { lng }),
@@ -24,12 +38,14 @@ export const ApiResponse = {
         };
     },
 
-    error(messageKey: string, lng = "en", meta?: unknown): ApiResponseData<undefined> {
+    error(messageKey: string, lng = "en", code?: string, details?: unknown): ApiErrorResponse {
         return {
             success: false,
             message: i18next.t(messageKey, { lng }),
-            data: undefined,
-            meta,
+            error: {
+                code: code || messageKey.toUpperCase().replace(/\./g, "_"),
+                details: details || null,
+            },
         };
     },
 };
