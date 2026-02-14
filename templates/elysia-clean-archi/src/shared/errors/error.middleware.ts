@@ -17,11 +17,21 @@ export const handleError: ErrorHandler = ({ code, error, set, request }) => {
     const lng = request.headers.get("accept-language")?.split(",")[0] || "en";
 
     console.log("[ErrorHandler] i18next ready:", i18next.isInitialized);
-    console.log("[ErrorHandler] test translate:", i18next.t("errors.unauthorized", { lng }));
+    console.error(error);
 
     if (isAppError(error)) {
         set.status = error.statusCode;
-        return ApiResponse.error(error.messageKey, lng, error.messageKey.toUpperCase().replace(/\./g, "_"), error.details);
+        const code = error.messageKey
+            .replace(/^errors\./, "")
+            .toUpperCase()
+            .replace(/\./g, "_");
+
+        return ApiResponse.error(
+            error.messageKey,
+            lng,
+            code,
+            error.details,
+        );
     }
 
     if (code === "NOT_FOUND") {
@@ -33,10 +43,9 @@ export const handleError: ErrorHandler = ({ code, error, set, request }) => {
         set.status = 422;
         const validationErrors = (error as any).all || [];
 
-        // Format validation errors to be more user-friendly
         const formattedErrors = validationErrors.map((err: any) => ({
-            field: err.path?.replace(/^\//, '') || 'unknown',
-            message: err.summary || err.message || 'Validation failed',
+            field: err.path?.replace(/^\//, ""),
+            message: err.summary || err.message || "Validation failed",
             value: err.value,
             expected: err.schema?.format || err.schema?.type,
         }));
@@ -49,7 +58,7 @@ export const handleError: ErrorHandler = ({ code, error, set, request }) => {
         "errors.internal",
         lng,
         "INTERNAL_SERVER_ERROR",
-        process.env.NODE_ENV === "development" ? error : undefined,
+        process.env.NODE_ENV === "development" ? [error] : [],
     );
 };
 

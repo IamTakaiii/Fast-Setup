@@ -19,7 +19,8 @@ export interface ApiErrorResponse {
     message: string;
     error: {
         code: string;
-        details: unknown;
+        message: string;
+        details: unknown[];
     };
 }
 
@@ -38,13 +39,14 @@ export const ApiResponse = {
         };
     },
 
-    error(messageKey: string, lng = "en", code?: string, details?: unknown): ApiErrorResponse {
+    error(messageKey: string, lng = "en", code?: string, details: unknown[] = []): ApiErrorResponse {
         return {
             success: false,
-            message: i18next.t(messageKey, { lng }),
+            message: i18next.t("errors.occurred", { lng }),
             error: {
-                code: code || messageKey.toUpperCase().replace(/\./g, "_"),
-                details: details || null,
+                code: code || messageKey.replace(/^errors\./, "").toUpperCase().replace(/\./g, "_"),
+                message: i18next.t(messageKey, { lng }),
+                details: details,
             },
         };
     },

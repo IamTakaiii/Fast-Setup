@@ -64,25 +64,6 @@ interface ResponseOptions {
     isDetail?: boolean;
 }
 
-/**
- * Create API response schema with flexible error handling
- * @param dataSchema - Schema for success response data
- * @param options - Optional error configurations
- * @example
- * // Basic usage (includes 400, 401, 500 by default)
- * createApiResponseSchema(tripSchema)
- *
- * // With custom errors
- * createApiResponseSchema(tripSchema, {
- *   errors: { 404: ErrorSchemas.notFound, 409: ErrorSchemas.conflict }
- * })
- *
- * // Without default errors
- * createApiResponseSchema(tripSchema, {
- *   errors: { 404: ErrorSchemas.notFound },
- *   includeDefaults: false
- * })
- */
 export const createApiResponseSchema = <T extends TSchema>(
     dataSchema: T,
     options?: ResponseOptions,
@@ -100,7 +81,6 @@ export const createApiResponseSchema = <T extends TSchema>(
         ...errorResponses,
     };
 };
-
 
 export const createApiResponseArraySchema = <T extends TSchema>(
     dataSchema: T,
