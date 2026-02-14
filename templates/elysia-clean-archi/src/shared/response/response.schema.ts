@@ -26,13 +26,12 @@ export const successResponseWithPaginationSchema = <T extends TSchema>(dataSchem
 export const errorResponseSchema = (code: string, message: string) =>
     t.Object({
         success: t.Boolean({ default: false }),
-        message: t.String({ default: message }),
-        error: t.Optional(
-            t.Object({
-                code: t.String({ default: code }),
-                details: t.Optional(t.Any()),
-            }),
-        ),
+        message: t.String({ default: "An error occurred" }),
+        error: t.Object({
+            code: t.String({ default: code }),
+            message: t.String({ default: message }),
+            details: t.Array(t.Any(), { default: [] }),
+        }),
     });
 
 export const ErrorSchemas = {
