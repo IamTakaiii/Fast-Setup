@@ -1,10 +1,7 @@
 import fs from "fs-extra";
 import path from "path";
 import pc from "picocolors";
-import { fileURLToPath } from "url";
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const TEMPLATES_DIR = path.resolve(__dirname, "../../templates");
+import { TEMPLATES_DIR } from "../constants.js";
 
 export async function list() {
 	try {
