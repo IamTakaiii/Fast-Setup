@@ -120,7 +120,12 @@ async function executeGeneration(src: string, dest: string, name: string) {
 	console.log(pc.blue(`\n🚀 Generating project ${pc.cyan(name)}...`));
 
 	// Copy template files
-	await fs.copy(src, dest);
+	await fs.copy(src, dest, {
+		filter: (srcPath) => {
+			const basename = path.basename(srcPath);
+			return !["node_modules", ".git", "meta.json"].includes(basename);
+		},
+	});
 
 	// Update package.json
 	const pkgPath = path.join(dest, "package.json");
